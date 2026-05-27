@@ -69,7 +69,7 @@ export async function manageAccessToken(expirationWindow: number, maxRetryTime: 
       // getting a new token
       const expiresIn = (result.token.expires_in as number) * 1000
       const expireAfter = expiresIn - expirationWindow
-      console.log(`Generated access token, will regenerate in ${expireAfter}ms`)
+      console.error(`Generated access token, will regenerate in ${expireAfter / 1000} seconds`)
       await setTimeout(expireAfter)
 
     } catch (e) {
