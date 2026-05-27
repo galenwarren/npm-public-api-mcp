@@ -56,7 +56,7 @@
     "access": "public"
   },
   "bin": {
-    "install": "dist/install.js",
+    "ebay-mcp-server-install": "dist/install.js",
     "ebay-mcp-server": "dist/index.js"
   }
 }
