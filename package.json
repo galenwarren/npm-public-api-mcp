@@ -6,7 +6,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc --project tsconfig.build.json",
-    "prepare": "tsc --project tsconfig.build.json",
+    "prepare": "npx tsc --project tsconfig.build.json",
     "start": "node dist/index.js",
     "dev": "tsx src/index.ts",
     "lint": "eslint .",
