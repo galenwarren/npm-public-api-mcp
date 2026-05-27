@@ -35,7 +35,8 @@ export const RECALL_SPEC_WITH_FIELD_URL = "https://api.ebay.com/developer/mcp/v1
 /**
  * Required environment variable names for the application
  */
-export const REQUIRED_ENV_VARS = ["EBAY_CLIENT_TOKEN"];
+// export const REQUIRED_ENV_VARS = ["EBAY_CLIENT_TOKEN"];
+export const REQUIRED_ENV_VARS = ["EBAY_ENVIRONMENT", "EBAY_CLIENT_ID", "EBAY_CLIENT_SECRET", "EBAY_SCOPE"];
 
 /**
  * API domain name, differentiated by api environment

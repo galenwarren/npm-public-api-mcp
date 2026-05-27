@@ -134,7 +134,7 @@ function registerOperation(
     zodProperties,
     async (input:Record<string, unknown>, _extra) => {
       try {
-        const { resolvedPath, headers, params, data } = prepareRequestData(input, operation, path);
+        const { resolvedPath, headers, params, data } = await prepareRequestData(input, operation, path);
         const url = baseUrl + resolvedPath;
         const resp = await axios.request({
           url,
@@ -190,7 +190,7 @@ function registerQueryApiTool(server: McpServer): void {
       try {
         const url = util.format(RECALL_SPEC_BY_PROMPT_URL, encodeURIComponent(input.prompt));
         const resp = await axios.get(url, {
-          headers: buildHeadersFromInput(undefined, false),
+          headers: await buildHeadersFromInput(undefined, false),
           httpsAgent: new (await import("https")).Agent({
             rejectUnauthorized: false,
           }),
@@ -223,7 +223,7 @@ function registerInvokeApiTool(server: McpServer): void {
     async (input, _extra: RequestHandlerExtra<ServerRequest, ServerNotification>) => {
       try {
         // Build headers
-        const headers = buildHeadersFromInput(input.headers, true);
+        const headers = await buildHeadersFromInput(input.headers, true);
         // query and parse apiSpec by specTitle and operationId
         const openApiDoc = await queryAndParseOpenApiDoc(input.specTitle, input.operationId, RECALL_SPEC_WITH_FIELD_URL);
         const replacedDomainUrl = replaceDomainNameByEnvironment(input.url);

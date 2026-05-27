@@ -64,7 +64,7 @@ export function readSchema2Map(obj: unknown): unknown {
 export async function queryAndParseOpenApiDoc(specTitle: string, operationId : string, specUrl: string): Promise<OpenAPIV3.Document> {
   const url = util.format(specUrl, specTitle, operationId);
   const apiSpecRes = await axios.get<string>(url,  {
-    headers: buildHeadersFromInput(undefined, false),
+    headers: await buildHeadersFromInput(undefined, false),
     httpsAgent: new (await import("https")).Agent({
       rejectUnauthorized: false,
     })});
