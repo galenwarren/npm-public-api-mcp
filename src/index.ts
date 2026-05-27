@@ -34,6 +34,7 @@ async function main(): Promise<void> {
   const server = initServer();
 
   // start the access token loop with a 5-minute refresh window and max of 60 seconds retry
+  // TODO: make these configurable?
   manageAccessToken(300000, 60000).catch((error) => {
     console.error("Access token loop failed:", error instanceof Error ? error.message : String(error));
     process.exit(1)

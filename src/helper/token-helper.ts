@@ -5,11 +5,12 @@ import pRetry from 'p-retry';
 // removed in favor of dynamic token loading
 // const USER_TOKEN = process.env.EBAY_CLIENT_TOKEN || "";
 
-// store the access token
+// track the access token ready state
+const { promise: accessTokenReadyPromise, resolve: accessTokenReadyResolve, reject: accessTokenReadyReject } = Promise.withResolvers()
+
+// store the access token, this is not valid until the promise above is resolved
 let accessToken: string = ""
 
-// track the ready state
-const { promise: accessTokenReadyPromise, resolve: accessTokenReadyResolve, reject: accessTokenReadyReject } = Promise.withResolvers()
 
 /**
  * Get the current user token
